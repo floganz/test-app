@@ -3,12 +3,134 @@
   <head>
     <title>TestApp</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body ng-app="test-app">
+  <div ng-controller="MainController as main">
+    <button ng-click="main.new()">Create</button>
+      <form class="form" ng-show="main.show" ng-model="university">
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text" name="name" class="form-control" ng-model="university.name">
+        </div>
+        <div ng-controller="dateController as date">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup ng-model="university.start_date" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup ng-model="university.end_date" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="Bachelor"
+              ng-model="university.degree">
+            Бакалавр
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="spec"
+            ng-model="university.degree">
+            Специалист
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="Master"
+            ng-model="university.degree">
+            Магистр
+          </label>
+        </div>
+        <button ng-click="main.create(university)">Create</button>
+      </form>
+    <div ng-show=success>
+      la-la-la
+    </div>
+    <div ng-repeat="uni in unis">
+      <div class=university-container>
+        <div class="university-buttons">
+          <button ng-click="main.edit(uni.id)">Edit</button>
+          <button ng-click="main.delete(uni.id)">Destroy</button>
+        </div>
+        <div class="university-dates">
+          <span class="university-start">{{ uni.start_date }}</span>
+          <span class="university-end">{{ uni.end_date }}</span>
+        </div>
+        <div class="university-content">
+          <span class="university-title">
+            {{ uni.name }}
+          </span>
+          <span class="university-degree">
+            {{ uni.degree }}
+          </span>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <form class="form" ng-show="uni.show">
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text" name="university[name]" class="form-control" value="{{uni.name}}">
+        </div>
+        <div ng-controller="dateController as date">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup ng-model="uni.start_date" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup ng-model="uni.end_date" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="Bachelor"
+              ng-model="uni.degree">
+            Бакалавр
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="spec"
+            ng-model="uni.degree">
+            Специалист
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="Master"
+            ng-model="uni.degree">
+            Магистр
+          </label>
+        </div>
+        <button ng-click="main.update(uni.id,uni)">Save changes</button>
+      </form>
+    </div>
+    <%#= yield %>
+  </div>
   </body>
 </html>

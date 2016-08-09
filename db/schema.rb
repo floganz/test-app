@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20160808092023) do
   enable_extension "plpgsql"
 
   create_table "universities", force: :cascade do |t|
-    t.string   "name"
-    t.string   "degree"
-    t.datetime "start_date"
-    t.datetime "end_time"
+    t.string "name"
+    t.string "degree"
+    t.date   "start_date"
+    t.date   "end_date"
   end
 
 end

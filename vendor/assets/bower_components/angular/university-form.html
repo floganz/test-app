@@ -1,0 +1,44 @@
+        <form class="form" ng-show="uni.show">
+          <div class="form-group">
+            <label for=""></label>
+            <input type="text" name="" class="form-control">
+          </div>
+<div ng-controller="dateController as date">
+  <div class="row">
+    <div class="col-md-6">
+      <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup ng-model="start.dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup ng-model="end.dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="bachelor">
+              Бакалавр
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="spec">
+              Специалист
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="master">
+              Магистр
+            </label>
+          </div>
+        </form>

@@ -1,7 +1,13 @@
 class UniversitiesController < ApplicationController
-  before_filter :find_university, :except => [:index]
+  skip_before_filter  :verify_authenticity_token
+  before_filter :find_university, :only => [:update, :destroy, :show]
 
   def index
+    @universities = University.all
+    #render json: @universities
+  end
+
+  def get_data
     @universities = University.all
     render json: @universities
   end
@@ -9,27 +15,31 @@ class UniversitiesController < ApplicationController
   def create
     @university = University.new university_params
     if @university.save
-      render json: @universities, success: "Added"
+      render json: @university, success: "Added"
     else
-      render json: @universities, danger: "Something go worng, try again"
+      render json: @university, danger: "Something go worng, try again"
     end
   end
 
   def update
     @university.update university_params
     if @university.save
-      render json: @universities, success: "Changed"
+      render json: @university, success: "Changed"
     else
-      render json: @universities, danger: "Something go worng, try again"
+      render json: @university, danger: "Something go worng, try again"
     end
   end
 
   def destroy
     if @university.destroy
-      render json: @universities, success: "Deleted"
+      render json: @university, success: "Deleted"
     else
-      render json: @universities, danger: "Something go worng, try again"
+      render json: @university, danger: "Something go worng, try again"
     end
+  end
+
+  def show
+    
   end
 
   private

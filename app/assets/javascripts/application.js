@@ -14,5 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require angular
-//= require app
+//= require angular-bootstrap
+//= require angular-ui-router
+//= require code/app.module
+//= require code/mainController
+//= require code/dataService
+//= require code/dateController
 //= require_tree .
