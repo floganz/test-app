@@ -1,14 +1,15 @@
 angular.module('test-app')
 			 .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, uni, del) {
 
-  $scope.uni = uni;
+	var vm = this;
+  vm.uni = uni;
 
-  $scope.ok = function () {
+  vm.ok = function () {
     del(uni.id);
     $uibModalInstance.close();
   };
 
-  $scope.cancel = function () {
+  vm.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
 });

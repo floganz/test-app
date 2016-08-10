@@ -5,19 +5,19 @@ function dataservice($http,$q) {
     get_data: get_data,
     create: create,
     destroy: destroy,
-    edit: edit,
-    records: records
+     edit: edit
+    // records: records
   };
   return service;
 
-  var records = {};
+  // var records = {};
 
   function get_data() {
     var deffered = $q.defer();
     $http.get("/get_data")
     .success(function(data, status, headers, config){
-      records = data;
-      console.log(records);
+      // records = data;
+      //console.log(records);
       deffered.resolve(data);
     });
     return deffered.promise;

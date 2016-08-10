@@ -1,16 +1,15 @@
 angular.module('test-app')
 			 .controller('MainController', ['$http','dataservice','$rootScope',
-   function($http,dataservice,$rootScope) {
+   function($http,dataservice) {
     var vm = this;
-    vm.show = false;
-    vm.unis = dataservice.records;
-    console.log(vm.unis);
-    console.log(dataservice.records);
-
     var opened = vm;
+    vm.show = false;
+    dataservice.get_data().then(function(data) {
+        vm.unis = data;
+    });
 
     this.new = function(newValue) {
-      $rootScope.university = {};
+      vm.university = {};
       if (vm.show) {
         vm.show = false;
       } else {
@@ -23,60 +22,61 @@ angular.module('test-app')
     this.create = function(newValue) {
       vm.show = false;
       dataservice.create(newValue).then(function(data) {
-        //$rootScope.unis.unshift(data);
         vm.unis.unshift(data);
       });
     };
 
     this.delete = function(id) {
-      var obj =  $rootScope.unis.filter(function(obj) {
+      var obj =  vm.unis.filter(function(obj) {
         return obj.id == id;
       });
-      var i =  $rootScope.unis.indexOf(obj[0]);
+      var i =  vm.unis.indexOf(obj[0]);
       //console.log(id);
       dataservice.destroy(id).then(function(id) {
-        $rootScope.unis.splice(i, 1);
+        vm.unis.splice(i, 1);
       });
     };
 
     this.edit = function(id) {
-      var obj =  $rootScope.unis.filter(function(obj) {
+      var obj =  vm.unis.filter(function(obj) {
         return obj.id == id;
       });
-      var i =  $rootScope.unis.indexOf(obj[0]);
-      if ($rootScope.unis[i].show) {
-        $rootScope.unis[i].show = false
+      var i =  vm.unis.indexOf(obj[0]);
+      // console.log(i);
+      if (vm.unis[i].show) {
+        vm.unis[i].show = false
       }
       else {
         opened.show = false;
-        $rootScope.unis[i].show = true
-        opened = $rootScope.unis[i];
+        vm.unis[i].show = true
+        opened = vm.unis[i];
       }
-      
-      $rootScope.university = angular.copy($rootScope.unis[i]);
-      $rootScope.university.start_date = new Date($rootScope.unis[i].start_date);
-      $rootScope.university.end_date = new Date($rootScope.unis[i].end_date);
+      // console.log(vm.unis[i]);
+      vm.university = angular.copy(vm.unis[i]);
+      vm.university.start_date = new Date(vm.unis[i].start_date);
+      vm.university.end_date = new Date(vm.unis[i].end_date);
+      // console.log(vm.university);
     };
 
     this.cancel = function(id) {
-      $rootScope.unis[i].show = false;
+      vm.unis[i].show = false;
     };
 
     this.update = function(id,newValue) {
       console.log(id);
       console.log(newValue);
-      var obj =  $rootScope.unis.filter(function(obj) {
+      var obj =  vm.unis.filter(function(obj) {
         return obj.id == id;
       });
-      var i =  $rootScope.unis.indexOf(obj[0]);
-      if ($rootScope.unis[i].show)
-        $rootScope.unis[i].show = false
+      var i =  vm.unis.indexOf(obj[0]);
+      if (vm.unis[i].show)
+        vm.unis[i].show = false
       else
-        $rootScope.unis[i].show = true
-      //$rootScope.unis.splice(i, 1);
+        vm.unis[i].show = true
+      //vm.unis.splice(i, 1);
 
       dataservice.edit(id,newValue).then(function(data) {
-        $rootScope.unis[i] = data;
+        vm.unis[i] = data;
       });
     };
   }]);

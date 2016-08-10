@@ -16,7 +16,7 @@
     </div>
     <div id="container">
       <div ng-include='"code/templates/formNew.html"' ng-show="main.show"></div>
-      <div ng-repeat="uni in dataservice.records">
+      <div ng-repeat="uni in main.unis">
         <div class=university-container>
           <div class="university-buttons">
             <button  class="btn btn-primary" ng-click="main.edit(uni.id)">
@@ -24,7 +24,7 @@
               Edit
             </button>
             <div ng-controller="ModalController as modal">
-              <button class="btn btn-danger" ng-click="open(uni,main.delete)">
+              <button class="btn btn-danger" ng-click="modal.open(uni,main.delete)">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 Remove
               </button>

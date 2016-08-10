@@ -5,31 +5,30 @@
   <div class="university-dates">
     <div class="university-date">
       From:
-      <span class="university-start">{{ uni.start_date }}</span>
+      <span class="university-start">{{ m.uni.start_date }}</span>
     </div>
     <div class="university-date">
       To:
-      <span class="university-end">{{ uni.end_date }}</span>
+      <span class="university-end">{{ m.uni.end_date }}</span>
     </div>
   </div>
   <div class="university-content">
     <span class="university-title">
-      {{ uni.name }}
+      {{ m.uni.name }}
     </span>
     <span class="university-degree">
-      {{ uni.degree }}
+      {{ m.uni.degree }}
     </span>
   </div>
 </div>
 <div class="clear"></div>
 <div class="modal-footer">
-    <button class="btn btn-warning" type="button" ng-click="ok()">
+    <button class="btn btn-warning" type="button" ng-click="m.ok()">
       <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
       Delete
     </button>
-    <button class="btn btn-info" type="button" ng-click="cancel()">
+    <button class="btn btn-info" type="button" ng-click="m.cancel()">
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       Cancel
     </button>
 </div>
-           

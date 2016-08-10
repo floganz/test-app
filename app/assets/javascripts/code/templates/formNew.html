@@ -1,14 +1,14 @@
-<form class="form" ng-model="university">
+<form class="form">
   <label>Add new record</label>
   <div class="form-group">
     <label for=""></label>
-    <input type="text" name="name" class="form-control" ng-model="university.name">
+    <input type="text" name="name" class="form-control" ng-model="main.university.name">
   </div>
   <div ng-controller="dateController as date">
     <div class="row">
       <div class="col-md-6">
         <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup ng-model="university.start_date" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <input type="text" class="form-control" uib-datepicker-popup ng-model="main.university.start_date" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-6">
         <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup ng-model="university.end_date" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
+          <input type="text" class="form-control" uib-datepicker-popup ng-model="main.university.end_date" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -27,21 +27,21 @@
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Bachelor"
-        ng-model="university.degree">
+        ng-model="main.university.degree">
       Bachelor
     </label>
   </div>
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Specialist"
-      ng-model="university.degree">
+      ng-model="main.university.degree">
       Specialist
     </label>
   </div>
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Master"
-      ng-model="university.degree">
+      ng-model="main.university.degree">
       Master
     </label>
   </div>
