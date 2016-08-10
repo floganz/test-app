@@ -1,20 +1,30 @@
 angular.module('test-app')
 			 .controller('MainController', ['$http','dataservice','$rootScope',
    function($http,dataservice,$rootScope) {
-    var self = this;
-    self.show = false;
+    var vm = this;
+    vm.show = false;
+    vm.unis = dataservice.records;
+    console.log(vm.unis);
+    console.log(dataservice.records);
+
+    var opened = vm;
 
     this.new = function(newValue) {
-      if (self.show)
-        self.show = false;
-      else
-        self.show = true;
+      $rootScope.university = {};
+      if (vm.show) {
+        vm.show = false;
+      } else {
+        opened.show = false;
+        vm.show = true;
+        opened = vm;
+      }
     };
 
     this.create = function(newValue) {
-      self.show = false;
+      vm.show = false;
       dataservice.create(newValue).then(function(data) {
-        $rootScope.unis.unshift(data);
+        //$rootScope.unis.unshift(data);
+        vm.unis.unshift(data);
       });
     };
 
@@ -34,15 +44,18 @@ angular.module('test-app')
         return obj.id == id;
       });
       var i =  $rootScope.unis.indexOf(obj[0]);
-      if ($rootScope.unis[i].show)
+      if ($rootScope.unis[i].show) {
         $rootScope.unis[i].show = false
-      else
+      }
+      else {
+        opened.show = false;
         $rootScope.unis[i].show = true
+        opened = $rootScope.unis[i];
+      }
+      
       $rootScope.university = angular.copy($rootScope.unis[i]);
-      $rootScope.university.start_date = Date.parse($rootScope.unis[i].start_date);
-      $rootScope.university.end_date = Date.parse($rootScope.unis[i].end_date);
-      //console.log($rootScope.university.start_date);
-      //console.log($rootScope.university.start_date.toDateString());
+      $rootScope.university.start_date = new Date($rootScope.unis[i].start_date);
+      $rootScope.university.end_date = new Date($rootScope.unis[i].end_date);
     };
 
     this.cancel = function(id) {
@@ -60,9 +73,10 @@ angular.module('test-app')
         $rootScope.unis[i].show = false
       else
         $rootScope.unis[i].show = true
-      $rootScope.unis.splice(i, 1);
+      //$rootScope.unis.splice(i, 1);
+
       dataservice.edit(id,newValue).then(function(data) {
-        $rootScope.unis.unshift(data);
+        $rootScope.unis[i] = data;
       });
     };
   }]);

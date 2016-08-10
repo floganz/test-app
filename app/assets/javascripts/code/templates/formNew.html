@@ -1,4 +1,5 @@
 <form class="form" ng-model="university">
+  <label>Add new record</label>
   <div class="form-group">
     <label for=""></label>
     <input type="text" name="name" class="form-control" ng-model="university.name">
@@ -27,22 +28,29 @@
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Bachelor"
         ng-model="university.degree">
-      Бакалавр
+      Bachelor
     </label>
   </div>
   <div class="radio">
     <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios1" value="spec"
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="Specialist"
       ng-model="university.degree">
-      Специалист
+      Specialist
     </label>
   </div>
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Master"
       ng-model="university.degree">
-      Магистр
+      Master
     </label>
   </div>
-  <button ng-click="main.create(university)">Create</button>
+  <button ng-click="main.create(university)" class="btn btn-success">
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    Save changes
+  </button>
+  <button ng-click="main.new()" class="btn btn-warning">
+    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    Cancel
+  </button>
 </form>

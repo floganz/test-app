@@ -15,26 +15,26 @@ class UniversitiesController < ApplicationController
   def create
     @university = University.new university_params
     if @university.save
-      render json: @university, success: "Added"
+      render json: @university
     else
-      render json: @university, danger: "Something go worng, try again"
+      render json: { "status": "Something go wrong, try again"}
     end
   end
 
   def update
     @university.update university_params
     if @university.save
-      render json: @university, success: "Changed"
+      render json: @university
     else
-      render json: @university, danger: "Something go worng, try again"
+      render json: @university
     end
   end
 
   def destroy
     if @university.destroy
-      render json: @university, success: "Deleted"
+      render json: @university
     else
-      render json: @university, danger: "Something go worng, try again"
+      render json: @university
     end
   end
 

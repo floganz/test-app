@@ -3,8 +3,14 @@
 </div>
 <div class=university-container>
   <div class="university-dates">
-    <span class="university-start">{{ uni.start_date }}</span>
-    <span class="university-end">{{ uni.end_date }}</span>
+    <div class="university-date">
+      From:
+      <span class="university-start">{{ uni.start_date }}</span>
+    </div>
+    <div class="university-date">
+      To:
+      <span class="university-end">{{ uni.end_date }}</span>
+    </div>
   </div>
   <div class="university-content">
     <span class="university-title">
@@ -15,8 +21,15 @@
     </span>
   </div>
 </div>
+<div class="clear"></div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-warning" type="button" ng-click="ok()">
+      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      Delete
+    </button>
+    <button class="btn btn-info" type="button" ng-click="cancel()">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      Cancel
+    </button>
 </div>
            
