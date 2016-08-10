@@ -16,8 +16,5 @@
 //= require angular
 //= require angular-bootstrap
 //= require angular-ui-router
-//= require code/app.module
-//= require code/mainController
-//= require code/dataService
-//= require code/dateController
+//= require angular-rails-templates
 //= require_tree .

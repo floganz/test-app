@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title">Are you sure want to delete this record?</h3>
+</div>
+<div class=university-container>
+  <div class="university-dates">
+    <span class="university-start">{{ uni.start_date }}</span>
+    <span class="university-end">{{ uni.end_date }}</span>
+  </div>
+  <div class="university-content">
+    <span class="university-title">
+      {{ uni.name }}
+    </span>
+    <span class="university-degree">
+      {{ uni.degree }}
+    </span>
+  </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+           

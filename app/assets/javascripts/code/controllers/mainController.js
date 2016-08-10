@@ -6,12 +6,13 @@ angular.module('test-app')
 
     this.new = function(newValue) {
       if (self.show)
-        self.show = false
+        self.show = false;
       else
-        self.show = true
+        self.show = true;
     };
 
     this.create = function(newValue) {
+      self.show = false;
       dataservice.create(newValue).then(function(data) {
         $rootScope.unis.unshift(data);
       });
@@ -22,7 +23,7 @@ angular.module('test-app')
         return obj.id == id;
       });
       var i =  $rootScope.unis.indexOf(obj[0]);
-
+      //console.log(id);
       dataservice.destroy(id).then(function(id) {
         $rootScope.unis.splice(i, 1);
       });
@@ -37,8 +38,11 @@ angular.module('test-app')
         $rootScope.unis[i].show = false
       else
         $rootScope.unis[i].show = true
-      //console.log($rootScope.unis[i].start_date);
-      $rootScope.start.dt = $rootScope.unis[i].start_date;
+      $rootScope.university = angular.copy($rootScope.unis[i]);
+      $rootScope.university.start_date = Date.parse($rootScope.unis[i].start_date);
+      $rootScope.university.end_date = Date.parse($rootScope.unis[i].end_date);
+      //console.log($rootScope.university.start_date);
+      //console.log($rootScope.university.start_date.toDateString());
     };
 
     this.cancel = function(id) {
@@ -48,6 +52,15 @@ angular.module('test-app')
     this.update = function(id,newValue) {
       console.log(id);
       console.log(newValue);
+      var obj =  $rootScope.unis.filter(function(obj) {
+        return obj.id == id;
+      });
+      var i =  $rootScope.unis.indexOf(obj[0]);
+      if ($rootScope.unis[i].show)
+        $rootScope.unis[i].show = false
+      else
+        $rootScope.unis[i].show = true
+      $rootScope.unis.splice(i, 1);
       dataservice.edit(id,newValue).then(function(data) {
         $rootScope.unis.unshift(data);
       });

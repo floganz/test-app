@@ -1,11 +1,10 @@
 angular.module('test-app')
 .controller('dateController', function ($scope) {
-  //$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 
   $scope.today = function() {
     $scope.dt = new Date();
   };
-  $scope.today();
+  //$scope.today();
 
   $scope.clear = function() {
     $scope.dt = null;
