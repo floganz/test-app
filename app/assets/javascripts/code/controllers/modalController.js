@@ -1,5 +1,5 @@
 angular.module('test-app')
-			 .controller('ModalController', function ($scope, $uibModal, $log) {
+			 .controller('ModalController', ['$uibModal', '$log', function ($uibModal, $log) {
 
   var vm = this;
 

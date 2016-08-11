@@ -1,5 +1,6 @@
 angular.module('test-app')
-			 .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, uni, del) {
+			 .controller('ModalInstanceCtrl', '$uibModalInstance', 'uni', 'del',
+        function ($uibModalInstance, uni, del) {
 
 	var vm = this;
   vm.uni = uni;
