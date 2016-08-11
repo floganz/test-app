@@ -1,6 +1,7 @@
 // MyController.$inject = ['$scope', 'greeter'];
 angular.module('test-app')
-			 .controller('MainController', ['$http','dataservice', function($http,dataservice) {
+			 .controller('MainController', ['$http','dataservice', 
+  function($http,dataservice) {
     var vm = this;
     var opened = vm;
     vm.show = false;

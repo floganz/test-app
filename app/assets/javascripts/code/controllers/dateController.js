@@ -1,31 +1,32 @@
 angular.module('test-app')
-.controller('dateController', function ($scope) {
-
-  $scope.today = function() {
-    $scope.dt = new Date();
+.controller('dateController', function () {
+  var vm = this;
+  
+  vm.today = function() {
+    vm.dt = new Date();
   };
 
-  $scope.clear = function() {
-    $scope.dt = null;
+  vm.clear = function() {
+    vm.dt = null;
   };
 
-  $scope.open1 = function() {
-    $scope.popup1.opened = true;
+  vm.open1 = function() {
+    vm.popup1.opened = true;
   };
 
-  $scope.open2 = function() {
-    $scope.popup2.opened = true;
+  vm.open2 = function() {
+    vm.popup2.opened = true;
   };
 
-  $scope.setDate = function(year, month, day) {
-    $scope.dt = new Date(year, month, day);
+  vm.setDate = function(year, month, day) {
+    vm.dt = new Date(year, month, day);
   };
 
-  $scope.popup1 = {
+  vm.popup1 = {
     opened: false
   };
 
-  $scope.popup2 = {
+  vm.popup2 = {
     opened: false
   };
 });
