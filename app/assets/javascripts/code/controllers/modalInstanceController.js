@@ -1,5 +1,5 @@
 angular.module('test-app')
-			 .controller('ModalInstanceCtrl', '$uibModalInstance', 'uni', 'del',
+			 .controller('ModalInstanceCtrl', ['$uibModalInstance', 'uni', 'del',
         function ($uibModalInstance, uni, del) {
 
 	var vm = this;
@@ -13,4 +13,4 @@ angular.module('test-app')
   vm.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
-});
+}]);
