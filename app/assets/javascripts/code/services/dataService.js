@@ -1,4 +1,4 @@
-angular.module('test-app').service('dataservice', dataservice);
+angular.module('test-app').service('dataservice', ['$http', '$q', dataservice]);
 
 function dataservice($http,$q) {
   var service = {
