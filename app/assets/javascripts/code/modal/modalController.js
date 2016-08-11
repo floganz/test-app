@@ -8,7 +8,7 @@ angular.module('test-app')
     var modalInstance = $uibModal.open({
       animation: true,
       templateUrl: 'code/templates/modal.html',
-      controller: 'ModalInstanceCtrl as m',
+      controller: 'ModalInstanceController as m',
       resolve: {
         uni: function () {
           return record;

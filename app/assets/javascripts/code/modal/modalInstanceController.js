@@ -1,5 +1,5 @@
 angular.module('test-app')
-			 .controller('ModalInstanceCtrl', ['$uibModalInstance', 'uni', 'del',
+			 .controller('ModalInstanceController', ['$uibModalInstance', 'uni', 'del',
         function ($uibModalInstance, uni, del) {
 
 	var vm = this;

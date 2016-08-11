@@ -15,7 +15,7 @@
       </div>
     </div>
     <div id="container">
-      <div ng-include='"code/templates/formNew.html"' ng-show="main.show"></div>
+      <div form-new ng-if="main.show"></div>
       <div ng-repeat="uni in main.unis">
         <div class=university-container>
           <div class="university-buttons">
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div class="clear"></div>
-        <div ng-include='"code/templates/formEdit.html"' ng-show="uni.show"></div>
+        <div form-edit ng-if="uni.show"></div>
       </div>
       <%#= yield %>
     </div>
