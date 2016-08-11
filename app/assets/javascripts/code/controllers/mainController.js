@@ -1,4 +1,3 @@
-// MyController.$inject = ['$scope', 'greeter'];
 angular.module('test-app')
 			 .controller('MainController', ['$http','dataservice', 
   function($http,dataservice) {
@@ -22,6 +21,7 @@ angular.module('test-app')
 
     this.create = function(newValue) {
       vm.show = false;
+      console.log(newValue);
       dataservice.create(newValue).then(function(data) {
         vm.unis.unshift(data);
       });
@@ -59,9 +59,9 @@ angular.module('test-app')
       // console.log(vm.university);
     };
 
-    this.cancel = function(id) {
-      vm.unis[i].show = false;
-    };
+    // this.cancel = function(id) {
+    //   vm.unis[i].show = false;
+    // };
 
     this.update = function(id,newValue) {
       console.log(id);

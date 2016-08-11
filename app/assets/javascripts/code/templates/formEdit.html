@@ -1,9 +1,9 @@
-<form class="form">
+<form class="form" ng-submit="main.update(main.university.id,main.university)">
   <label>Edit</label>
   <div class="form-group">
     <label for=""></label>
     <input type="text" name="university[name]" class="form-control" value="{{main.university.name}}"
-    ng-model="main.university.name">
+    ng-model="main.university.name" ng-required="true">
   </div>
   <div ng-controller="dateController as date">
     <div class="row">
@@ -28,29 +28,29 @@
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Bachelor"
-        ng-model="main.university.degree">
+        ng-model="main.university.degree" ng-required="!main.university.degree">
       Bachelor
     </label>
   </div>
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Specialist"
-      ng-model="main.university.degree">
+      ng-model="main.university.degree" ng-required="!main.university.degree">
       Specialist
     </label>
   </div>
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Master"
-      ng-model="main.university.degree">
+      ng-model="main.university.degree" ng-required="!main.university.degree">
       Master
     </label>
   </div>
-  <button ng-click="main.update(main.university.id,main.university)" class="btn btn-success">
+  <button class="btn btn-success" type="submit">
     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
     Save changes
   </button>
-  <button ng-click="main.edit(uni.id)" class="btn btn-warning">
+  <button ng-click="main.edit(uni.id)" class="btn btn-warning" type="reset">
     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     Cancel
   </button>
