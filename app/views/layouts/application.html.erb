@@ -15,7 +15,8 @@
       </div>
     </div>
     <div id="container">
-      <div form-new ng-if="main.show"></div>
+      <form-new ng-if="main.show" on-update="main.addRecord(data)"
+        on-cancel="main.cancel()"></form-new>
       <div ng-repeat="uni in main.unis">
         <div class=university-container>
           <div class="university-buttons">
@@ -50,7 +51,8 @@
           </div>
         </div>
         <div class="clear"></div>
-        <div form-edit ng-if="uni.show"></div>
+        <form-edit ng-if="uni.show" university="main.university" 
+          on-update="main.editRecord(id,data)" on-cancel="main.cancel()"></form-edit>
       </div>
       <%#= yield %>
     </div>

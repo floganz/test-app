@@ -1,6 +1,6 @@
 angular.module('test-app')
-			 .controller('MainController', ['$http','dataservice', 
-  function($http,dataservice) {
+			 .controller('MainController', ['$scope','$http','dataservice', 
+  function($scope,$http,dataservice) {
     var vm = this;
     var opened = vm;
     vm.show = false;
@@ -10,7 +10,7 @@ angular.module('test-app')
 
     this.new = function(newValue) {
       vm.university = {};
-      if (vm.show) {
+      if(vm.show) {
         vm.show = false;
       } else {
         opened.show = false;
@@ -19,12 +19,23 @@ angular.module('test-app')
       }
     };
 
-    this.create = function(newValue) {
-      vm.show = false;
-      console.log(newValue);
-      dataservice.create(newValue).then(function(data) {
-        vm.unis.unshift(data);
+    this.addRecord = function(data) {
+      vm.unis.unshift(data);
+    };
+
+    this.editRecord = function (id,data) {
+      // console.log(id);
+      // console.log(data);
+      var obj =  vm.unis.filter(function(obj) {
+        return obj.id == id;
       });
+      var i =  vm.unis.indexOf(obj[0]);
+      opened.show = !opened.show;
+      vm.unis[i] = data;
+    }
+
+    this.cancel = function () {
+      opened.show = false;
     };
 
     this.delete = function(id) {
@@ -52,16 +63,14 @@ angular.module('test-app')
         vm.unis[i].show = true
         opened = vm.unis[i];
       }
+      // opened.show = !opened.show;
+      // opened = vm.unis[i];
       // console.log(vm.unis[i]);
       vm.university = angular.copy(vm.unis[i]);
       vm.university.start_date = new Date(vm.unis[i].start_date);
       vm.university.end_date = new Date(vm.unis[i].end_date);
       // console.log(vm.university);
     };
-
-    // this.cancel = function(id) {
-    //   vm.unis[i].show = false;
-    // };
 
     this.update = function(id,newValue) {
       console.log(id);
@@ -74,7 +83,6 @@ angular.module('test-app')
         vm.unis[i].show = false
       else
         vm.unis[i].show = true
-      //vm.unis.splice(i, 1);
 
       dataservice.edit(id,newValue).then(function(data) {
         vm.unis[i] = data;

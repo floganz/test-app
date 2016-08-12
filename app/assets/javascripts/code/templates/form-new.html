@@ -1,15 +1,14 @@
-<form class="form" ng-submit="main.update(main.university.id,main.university)">
-  <label>Edit</label>
+<form class="form" ng-submit="$ctrl.create($ctrl.university)">
+  <label>Add new record</label>
   <div class="form-group">
     <label for=""></label>
-    <input type="text" name="university[name]" class="form-control" value="{{main.university.name}}"
-    ng-model="main.university.name" ng-required="true">
+    <input type="text" name="name" class="form-control" ng-model="$ctrl.university.name" ng-required="true">
   </div>
   <div ng-controller="dateController as date">
     <div class="row">
       <div class="col-md-6">
         <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup ng-model="main.university.start_date" is-open="date.popup1.opened" datepicker-options="date.dateOptions" ng-required="true" close-text="Close" />
+          <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.university.start_date" is-open="date.popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="date.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -17,7 +16,7 @@
       </div>
       <div class="col-md-6">
         <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup ng-model="main.university.end_date" is-open="date.popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+          <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.university.end_date" is-open="date.popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="date.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -28,21 +27,21 @@
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Bachelor"
-        ng-model="main.university.degree" ng-required="!main.university.degree">
+        ng-model="$ctrl.university.degree" ng-required="!$ctrl.university.degree">
       Bachelor
     </label>
   </div>
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Specialist"
-      ng-model="main.university.degree" ng-required="!main.university.degree">
+      ng-model="$ctrl.university.degree" ng-required="!$ctrl.university.degree">
       Specialist
     </label>
   </div>
   <div class="radio">
     <label>
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="Master"
-      ng-model="main.university.degree" ng-required="!main.university.degree">
+      ng-model="$ctrl.university.degree" ng-required="!$ctrl.university.degree">
       Master
     </label>
   </div>
@@ -50,7 +49,7 @@
     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
     Save changes
   </button>
-  <button ng-click="main.edit(uni.id)" class="btn btn-warning" type="reset">
+  <button ng-click="$ctrl.cancel()" class="btn btn-warning" type="reset">
     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     Cancel
   </button>
