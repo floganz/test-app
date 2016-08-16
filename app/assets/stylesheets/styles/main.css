@@ -1,9 +1,8 @@
-#container {
-  width: 50%;
-  margin: auto;
+body {
+  margin: 0px;
 }
-
-#nav {
+  /*nav bar*/
+.nav {
   max-width: 1200px;
   background-color: #eee;
   border-radius: 0 0 10px 10px;
@@ -13,89 +12,160 @@
   margin: auto;
 }
 
-#logo {
+.logo {
   padding-left: 10px;
   float: left;
 }
 
-#new {
+.new {
   height: 60px;
   display: inline-block;
   margin-left: 15px;
   padding: 0 5px;
 }
 
-div #new:hover {
+div .new:hover {
   background-color: #ddd;
 }
 
-#new > span {
+.new > span {
   line-height: 60px;
   font-size: 20px;
 }
 
-#logo > span {
+.logo > span {
   font-size: 30px;
   line-height: 60px;
   font-family: Arial;
 }
+  /*main content*/
+.container {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  /*form*/
+my-form {
+  width: 100%;
+}
 
-.university-container, .form  {
-	min-width: 300px;
-  width: 80%;
-	padding: 25px 25px 10px 10px;
+._form {
+  padding: 25px;
   margin: 15px;
   background-color: #eee;
-  height: 150px;
+  /*height: 250px;*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.name-container {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.f-row {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+label {
+  font-weight: bold;
+}
+
+.input, .input-name {
+  height: 24px;
   float: left;
+  padding-left: 15px;
+}
+
+.input-name {
+  height: 24px;
+  float: left;
+  padding-left: 15px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.datepick-icon {
+  border: none;
+  background: url(http://icons.iconarchive.com/icons/custom-icon-design/mono-business-2/24/calendar-icon.png) no-repeat;
+  height: 24px;
+  width: 24px;
+  outline: none;
+  margin-top: 6px;
+  margin-left: -30px;
+}
+ /*university records*/
+ .feed {
+  width: 100%;
+ }
+
+.university-container2 {
+  display: flex;
+  justify-content: space-between;
+  min-width: 300px;
+  padding: 25px;
+  margin: 15px;
+  background-color: #eee;
+  height: 130px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.university-date {
+.university-content2 {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.university-buttons2, .university-dates2 {
+  display: flex;
+  height: 60%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.md-button.md-success {
+  background-color: #5cb85c;
+}
+
+.md-button.md-success.md-raised:not([disabled]):hover {
+  background-color: #5cb85c;
+}
+
+.md-button.md-success.md-raised {
+  color: white;
+}
+
+.university-date2 {
   margin: 3px;
   padding: 3px;
   border-radius: 5px;
   background-color: #ddd;
 }
 
-.university-buttons button {
-  width: 100%;
-  margin: 5px;
+.university-container > div {
+  margin: 0 auto; 
 }
 
-.form {
-  height: auto;
-}
-
-.university-buttons, .university-dates {
-	float: right;
-	width: 95px;
-}
-
-.clear {
-	clear: both;
-}
-
-.datepickerdemoBasicUsage {
-  /** Demo styles for mdCalendar. */ }
-  .datepickerdemoBasicUsage md-content {
-    padding-bottom: 200px; }
-  .datepickerdemoBasicUsage .validation-messages {
-    font-size: 12px;
-    color: #dd2c00;
-    margin: 10px 0 0 25px; }
-
-.university-title {
+.university-title2 {
   font-style: italic; 
   font-weight: bold;
   text-indent: 15px;
   text-transform: capitalize;
-  display: block;
   padding-left: 20px;
   padding-bottom: 20px;
 }
 
-.university-degree {
+.university-degree2 {
+  width: 120px;
   font-weight: bold;
   text-indent: 15px;
   background-color: white;
@@ -104,3 +174,36 @@ div #new:hover {
   padding: 5px;
   margin-left: 20px;
 }
+  /*modal*/
+.modal-title {
+  margin: 15px;
+}
+
+md-dialog-content {
+  margin: 15px;
+}
+/*datepicker*/
+.inputdemoBasicUsage .md-datepicker-button {
+  width: 36px;
+}
+.inputdemoBasicUsage .md-datepicker-input-container {
+  margin-left: 2px;
+}
+.md-datepicker-input-container {
+  display: block;
+}
+.md-datepicker-input[placeholder] {
+  color=red;
+}
+.padding-top-0 {
+  padding-top: 0px;
+}
+.padding-bottom-0 {
+  padding-bottom: 0px;
+}
+
+md-content, md-datepicker {
+  background-color: #eee;
+}
+
+/*other*/

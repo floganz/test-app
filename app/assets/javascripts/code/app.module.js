@@ -1,2 +1,2 @@
-angular.module('test-app',['ui.bootstrap','templates']);
+angular.module('test-app',['templates', 'ngMaterial']);
 

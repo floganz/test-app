@@ -1,0 +1,38 @@
+<div class=university-container2>
+  <div class="university-content2">
+    <span class="university-title2">
+      {{ $ctrl.uni.name }}
+    </span>
+    <span class="university-degree2">
+      {{ $ctrl.uni.degree }}
+    </span>
+  </div>
+  <div class="university-dates2">
+    <div class="university-date2">
+      From:<br>
+      <span class="university-start">{{ $ctrl.uni.start_date }}</span>
+    </div>
+    <div class="university-date2">
+      To:<br>
+      <span class="university-end">{{ $ctrl.uni.end_date }}</span>
+    </div>
+  </div>
+  <div class="university-buttons2">
+    <md-button class="md-primary md-raised" 
+        ng-click="$ctrl.edit(uni.id)">
+      Edit
+    </md-button>
+    <div ng-controller="ModalController as modal" 
+      class="md-padding" id="popupContainer" ng-cloak>
+      <div class="dialog-demo-content" 
+        layout="row" layout-wrap layout-margin layout-align="center">
+        <md-button class="md-warn md-raised" 
+            ng-click="modal.showAdvanced($event, $ctrl.uni, $ctrl.delete)">
+          Delete
+        </md-button>
+      </div>
+    </div>
+  </div>
+</div>
+<my-form ng-if="$ctrl.uni.show" type="$ctrl.type" university="$ctrl.university"
+  on-update="$ctrl.editRecord(id,data)" on-cancel="$ctrl.cancel()"></my-form>

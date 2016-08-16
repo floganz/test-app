@@ -1,0 +1,45 @@
+<form class="_form" name="form1" ng-submit="form1.$valid && $ctrl.onSubmit($ctrl.university)">
+  <h3 ng-if="$ctrl.type == 'new'">Add new record</h3>
+  <h4 ng-if="$ctrl.type == 'edit'">Edit</h4>
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>University</label>
+    <input ng-model="$ctrl.university.name" ng-required="true" type="text">
+  </md-input-container>
+  <div ng-controller="dateController as date">
+    <div class="f-row" ng-init="date.initDatepicker();">
+      <md-content flex class="padding-top-0 padding-bottom-0" layout="row">
+        <md-datepicker ng-model="$ctrl.university.start_date" md-placeholder="From"
+          ng-required="true">  
+        </md-datepicker>
+      </md-content>
+      <md-content flex class="padding-top-0 padding-bottom-0" layout="row">
+        <md-datepicker ng-model="$ctrl.university.end_date" md-placeholder="To"
+          ng-required="true">  
+        </md-datepicker>
+      </md-content>
+    </div>
+  </div>
+  <div>
+    <h4>Degree</h4>
+    <md-radio-group ng-model="$ctrl.university.degree" ng-required="true">
+      <md-radio-button value="Bachelor" class="md-primary">
+        Bachelor
+      </md-radio-button>
+      <md-radio-button value="Specialist" class="md-primary">
+        Specialist
+      </md-radio-button>
+      <md-radio-button value="Master" class="md-primary">
+        Master
+      </md-radio-button>
+    </md-radio-group>
+  </div>
+  <div>
+    <md-button class="md-success md-raised" type="submit">
+      <span ng-if="$ctrl.type == 'new'">Create</span>
+      <span ng-if="$ctrl.type == 'edit'">Save changes</span>   
+    </md-button>
+    <md-button ng-click="$ctrl.cancel()" class="md-primary md-raised">
+      Cancel
+    </md-button>
+  </div>
+</form>

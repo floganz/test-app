@@ -1,33 +1,19 @@
 angular.module('test-app')
-.controller('dateController', function () {
+.controller('dateController', function() {
   var vm = this;
-  
-  this.today = function() {
-    vm.dt = new Date();
+
+	vm.initDatepicker = function(){
+    angular.element(".md-datepicker-button").each(function(){
+      var el = this;
+      var ip = angular.element(el).parent().find("input").bind('click', function(e){
+        angular.element(el).click();
+      });
+      angular.element(this).css('display', 'none');
+    });
   };
 
-  this.clear = function() {
-    vm.dt = null;
-  };
-
-  this.open1 = function() {
-    vm.popup1.opened = true;
-  };
-
-  this.open2 = function() {
-    vm.popup2.opened = true;
-  };
-
-  this.setDate = function(year, month, day) {
-    vm.dt = new Date(year, month, day);
-  };
-
-  this.popup1 = {
-    opened: false
-  };
-
-  this.popup2 = {
-    opened: false
-  };
+  vm.myDate = new Date();
 });
+
+
 

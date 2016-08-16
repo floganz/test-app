@@ -1,22 +1,27 @@
 angular.module('test-app')
-			 .controller('ModalController', ['$uibModal', '$log', function ($uibModal, $log) {
+.controller('ModalController', ['$mdDialog', '$mdMedia',
+  function($mdDialog, $mdMedia) {
 
   var vm = this;
 
-  vm.open = function (record, del) {
-
-    var modalInstance = $uibModal.open({
-      animation: true,
-      templateUrl: 'code/templates/modal.html',
-      controller: 'ModalInstanceController as m',
-      resolve: {
-        uni: function () {
-          return record;
-        },
-        del: function () {
-          return del;
-        }
-      }
+  vm.showAdvanced = function(ev, record, del) {
+    console.log(record);
+    $mdDialog.show({
+      controller: 'DialogController as m',
+      templateUrl: 'code/modal/modal.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      locals: {
+        uni: record,
+        del: del
+      },
+      clickOutsideToClose:true
+    })
+    .then(function(answer) {
+      console.log(answer);
+    }, function() {
+      console.log("cancel");
     });
   };
+
 }]);

@@ -8,53 +8,18 @@
   </head>
 
   <body ng-app="test-app" ng-controller="MainController as main">
-    <div id="nav">
-      <div id="logo"><span>Higher education</span></div>
-      <div id="new" ng-click="main.new()">
+    <div class="nav">
+      <div class="logo"><span>Higher education</span></div>
+      <div class="new" ng-click="main.new()">
         <span>New record</span>
       </div>
     </div>
-    <div id="container">
-      <form-new ng-if="main.show" on-update="main.addRecord(data)"
-        on-cancel="main.cancel()"></form-new>
-      <div ng-repeat="uni in main.unis">
-        <div class=university-container>
-          <div class="university-buttons">
-            <button  class="btn btn-primary" ng-click="main.edit(uni.id)">
-              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-              Edit
-            </button>
-            <div ng-controller="ModalController as modal">
-              <button class="btn btn-danger" ng-click="modal.open(uni,main.delete)">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                Remove
-              </button>
-            </div>
-          </div>
-          <div class="university-dates">
-            <div class="university-date">
-              From:
-              <span class="university-start">{{ uni.start_date }}</span>
-            </div>
-            <div class="university-date">
-              To:
-              <span class="university-end">{{ uni.end_date }}</span>
-            </div>
-          </div>
-          <div class="university-content">
-            <span class="university-title">
-              {{ uni.name }}
-            </span>
-            <span class="university-degree">
-              {{ uni.degree }}
-            </span>
-          </div>
-        </div>
-        <div class="clear"></div>
-        <form-edit ng-if="uni.show" university="main.university" 
-          on-update="main.editRecord(id,data)" on-cancel="main.cancel()"></form-edit>
+    <div class="container">
+      <my-form ng-if="main.show" type="main.type" on-update="main.addRecord(data)"
+        on-cancel="main.cancel()"></my-form>
+      <div ng-repeat="uni in main.unis" class="feed">
+        <university-record uni="uni" opened="main.opened"></university-record>
       </div>
-      <%#= yield %>
     </div>
   </body>
 </html>

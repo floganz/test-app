@@ -2,20 +2,26 @@ angular.module('test-app')
 			 .controller('MainController', ['$scope','$http','dataservice', 
   function($scope,$http,dataservice) {
     var vm = this;
-    var opened = vm;
+    vm.scope = $scope;
+    vm.opened = vm;
     vm.show = false;
+    
     dataservice.get_data().then(function(data) {
         vm.unis = data;
     });
 
     this.new = function(newValue) {
       vm.university = {};
+      vm.type = "new";
+      // console.log(vm.type);
       if(vm.show) {
         vm.show = false;
       } else {
-        opened.show = false;
+        vm.opened.show = false;
         vm.show = true;
-        opened = vm;
+        // console.log(vm.type);
+        // console.log(vm.show);
+        vm.opened = vm;
       }
     };
 
@@ -23,22 +29,11 @@ angular.module('test-app')
       vm.unis.unshift(data);
     };
 
-    this.editRecord = function (id,data) {
-      // console.log(id);
-      // console.log(data);
-      var obj =  vm.unis.filter(function(obj) {
-        return obj.id == id;
-      });
-      var i =  vm.unis.indexOf(obj[0]);
-      opened.show = !opened.show;
-      vm.unis[i] = data;
-    }
-
     this.cancel = function () {
-      opened.show = false;
+      vm.opened.show = false;
     };
 
-    this.delete = function(id) {
+    vm.scope.$on('deleteRecord',function(event, id){
       var obj =  vm.unis.filter(function(obj) {
         return obj.id == id;
       });
@@ -47,45 +42,5 @@ angular.module('test-app')
       dataservice.destroy(id).then(function(id) {
         vm.unis.splice(i, 1);
       });
-    };
-
-    this.edit = function(id) {
-      var obj =  vm.unis.filter(function(obj) {
-        return obj.id == id;
-      });
-      var i =  vm.unis.indexOf(obj[0]);
-      // console.log(i);
-      if (vm.unis[i].show) {
-        vm.unis[i].show = false
-      }
-      else {
-        opened.show = false;
-        vm.unis[i].show = true
-        opened = vm.unis[i];
-      }
-      // opened.show = !opened.show;
-      // opened = vm.unis[i];
-      // console.log(vm.unis[i]);
-      vm.university = angular.copy(vm.unis[i]);
-      vm.university.start_date = new Date(vm.unis[i].start_date);
-      vm.university.end_date = new Date(vm.unis[i].end_date);
-      // console.log(vm.university);
-    };
-
-    this.update = function(id,newValue) {
-      console.log(id);
-      console.log(newValue);
-      var obj =  vm.unis.filter(function(obj) {
-        return obj.id == id;
-      });
-      var i =  vm.unis.indexOf(obj[0]);
-      if (vm.unis[i].show)
-        vm.unis[i].show = false
-      else
-        vm.unis[i].show = true
-
-      dataservice.edit(id,newValue).then(function(data) {
-        vm.unis[i] = data;
-      });
-    };
+    });
   }]);
