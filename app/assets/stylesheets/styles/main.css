@@ -192,9 +192,9 @@ md-dialog-content {
 .md-datepicker-input-container {
   display: block;
 }
-.md-datepicker-input[placeholder] {
+/*.md-datepicker-input[placeholder] {
   color=red;
-}
+}*/
 .padding-top-0 {
   padding-top: 0px;
 }
